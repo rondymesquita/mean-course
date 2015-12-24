@@ -22,7 +22,7 @@ module.exports = function(){
     // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
     app.use(methodOverride('X-HTTP-Method-Override'));
     // set the static files location /public/img will be /img for users
-    app.use(express.static(__dirname + '/public'));
+    app.use(express.static(path.join(__dirname,'../public')));
 
     app.engine('html', require('ejs').renderFile);
     app.set('view engine','ejs');
