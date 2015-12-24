@@ -1,5 +1,11 @@
-module.exports = function(app, controller){
-    app.get('/', controller.index);
-    app.get('/list', controller.list);
-    app.post('/save',controller.save);
+var indexController = require('../controllers/indexController');
+var taskController = require('../controllers/taskController');
+module.exports = function(app){
+
+    //indexController
+    app.get('/', indexController.index);
+    app.get('/about', indexController.about);
+
+    //taskController
+    
 };

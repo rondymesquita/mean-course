@@ -2,7 +2,6 @@ var express 		= require("express");
 var path 			= require('path');
 var bodyParser     	= require('body-parser');
 var methodOverride 	= require('method-override');
-var controller 		= require('./app/controllers/index');
 var routes			= require('./app/routes/routes.js')
 var app = express();
 
@@ -22,7 +21,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
 
-routes(app, controller);
+routes(app);
 
 app.set('port', process.env.PORT || 3000);
 
@@ -31,6 +30,4 @@ var server = app.listen(app.get('port'), function(){
 	console.log('Server started at '+ server.address().port);
 });
 
-//console.log("==> " +routes);
-
-//exports = module.exports = app;
+exports = module.exports = app;
