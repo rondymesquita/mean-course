@@ -1,8 +1,5 @@
 //var express 		= require("express");
 var http 			= require('http');
-
-
-
 var app 			= require('./config/express')();
 //var app = express();
 
@@ -32,7 +29,7 @@ var app 			= require('./config/express')();
 // 	console.log('Server started at '+ server.address().port);
 // });
 //
-// exports = module.exports = app;
+module.export = exports = module.exports = app;
 
 var server = http.createServer(app).listen(app.get('port'),function(){
 	console.log('==> Server started at '+ server.address().port);
