@@ -22,7 +22,7 @@ var contactController = function($scope, constants, $routeParams, contactService
             $timeout(function(){
                 $scope.contacts = data;
                 $scope.onLoading = false;
-            }, 2000);
+            }, 0);
 
         },function(data){
             console.log("error on controller");

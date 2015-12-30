@@ -1,3 +1,6 @@
+var fileSystem = require('fs');
+var Contact     = require('../models/contact').init();
+
 var contacts = [
     {
         _id: guid(),
@@ -16,42 +19,67 @@ var contacts = [
     }
 ];
 
-var fileSystem = require('fs');
-
 module.exports.list = function(req, res){
-    //contacts = [];
-    res.json(contacts);
+    var promise = Contact.find().exec();
+    promise.then(function(data){
+        res.json(data);
+    },function(error){
+        res.status(500).json(error);
+    });
 };
 
 module.exports.save = function(req, res){
     var contact = req.body;
-    contact['_id'] = guid();
-    contacts.push(contact);
-    console.log(contacts);
-    res.sendStatus(200).end();
-};
+    Contact.create(contact).then(function(data){
+        res.status(201).json(data);
+    },function(error){
+        res.status(500).json(error);
+    });
+}
 
 module.exports.getById = function(req, res){
-    var id = req.params.id;
-    console.log('Id: '+id);
 
-    var contact = contacts.filter(function(contact){
-        return contact._id == id;
-    })[0];
-
-    contact ? res.json(contact) : res.status(404).send('Contato não encontrado');
-};
+}
 
 module.exports.delete = function(req, res){
-    var id = req.params.id;
-    console.log('removendo: '+id);
 
-    contacts = contacts.filter(function(contact){
-        return contact._id != id;
-    });
+}
 
-    res.sendStatus(204).end();
-};
+
+// module.exports.list = function(req, res){
+//     res.json(contacts);
+// };
+//
+// module.exports.save = function(req, res){
+//     var contact = req.body;
+//     contact['_id'] = guid();
+//     contacts.push(contact);
+//     console.log(contacts);
+//     res.sendStatus(200).end();
+// };
+//
+// module.exports.getById = function(req, res){
+//     var id = req.params.id;
+//     console.log('Id: '+id);
+//
+//     var contact = contacts.filter(function(contact){
+//         return contact._id == id;
+//     })[0];
+//
+//     contact ? res.json(contact) : res.status(404).send('Contato não encontrado');
+// };
+//
+// module.exports.delete = function(req, res){
+//     var id = req.params.id;
+//     console.log('removendo: '+id);
+//
+//     contacts = contacts.filter(function(contact){
+//         return contact._id != id;
+//     });
+//
+//     res.sendStatus(204).end();
+// };
+//
 
 function guid() {
     function _p8(s) {
