@@ -2,7 +2,6 @@ var express             = require('express');
 var bodyParser     	    = require('body-parser');
 var methodOverride 	    = require('method-override');
 var path 			    = require('path');
-
 var routes			   = require('../app/routes/routes')
 
 module.exports = function(){
