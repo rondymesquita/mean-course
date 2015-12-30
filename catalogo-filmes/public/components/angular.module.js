@@ -1,7 +1,11 @@
-var angularModule = angular.module('catalogoApp',['ngMaterial'])
+var angularModule = angular.module('contactApp',['ngMaterial','ngRoute','ngResource'])
 .run(function(){
-    console.log("loaded");
+    console.log("Loaded");
+    console.log("======");
 }).config(function($httpProvider, $mdThemingProvider){
+
+    // Don't strip trailing slashes from calculated URLs
+  // $resourceProvider.defaults.stripTrailingSlashes = false
 
     $mdThemingProvider.theme('default')
         .primaryPalette('indigo')

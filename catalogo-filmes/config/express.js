@@ -9,14 +9,12 @@ module.exports = function(){
     var app = express();
     app.set('port', process.env.PORT || 3000);
 
-    routes(app);
-
     //middlewares
     // get all data/stuff of the body (POST) parameters
     // parse application/json
     app.use(bodyParser.json());
     // parse application/vnd.api+json as json
-    app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+    //app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
     // parse application/x-www-form-urlencoded
     app.use(bodyParser.urlencoded({ extended: true }));
     // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
@@ -27,6 +25,13 @@ module.exports = function(){
     app.engine('html', require('ejs').renderFile);
     app.set('view engine','ejs');
     app.set('views', path.join(__dirname,'../app/views'));
+
+    //alwarys before configurate body parser
+    routes(app);
+    app.use('/', function(req, res, next){
+    	//console.log('===> interceptor 1');
+    	next();
+    });
 
     return app;
 }

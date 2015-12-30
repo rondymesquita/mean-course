@@ -1,38 +1,8 @@
-<!DOCTYPE html>
+        <% include includes/header.ejs %>
+        <% include includes/menu.ejs %>
 
-<html ng-app="catalogoApp">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Index</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- CSS -->
-        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
-        <!-- <link href="font-awesome/css/font-awesome.css" rel="stylesheet" > -->
-        <link rel="stylesheet" href="css/style.css"/>
-
-        <!-- Libraries -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-        <script src="bower_components/angular-aria/angular-aria.min.js"></script>
-        <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-        <script src="bower_components/angular-material/angular-material.js"></script>
-
-        <!-- Components -->
-        <script src="components/angular.module.js"></script>
-        <script src="components/task/taskController.js"></script>
-        <script src="components/constants.js"></script>
-
-    </head>
-    <body ng-controller="TodoController">
-        <div>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-        </div>
         <%=name %>
+
         <md-content>
 
             <p>

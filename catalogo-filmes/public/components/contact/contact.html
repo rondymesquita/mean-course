@@ -1,0 +1,53 @@
+
+<md-content layout-padding>
+    <ng-include src="'components/shared/header.html'"></ng-include>
+    <div layout="row" layout-padding>
+        <div flex>
+            <form ng-submit="save()">
+                <md-input-container>
+                    <label>Nome</label>
+                    <input ng-model="contact.name" />
+                </md-input-container>
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="contact.email" />
+                </md-input-container>
+                <md-button class="md-raised md-accent" type="submit">
+                  {{constants.add}}
+                </md-button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <p ng-show="contacts.length && !onLoading">
+            {{contacts.length}} contatos cadastrados
+        </p>
+        <p ng-hide="contacts.length || onLoading">
+            Não há contatos cadastrados
+        </p>
+        <p ng-show="onLoading">
+            Carregando dados...
+        </p>
+    </div>
+    <div ng-show="contacts.length">
+    <div>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ação</th>
+            </tr>
+            <tr ng-repeat="contact in contacts">
+                <td>{{contact._id}}</td>
+                <td>{{contact.name}}</td>
+                <td>{{contact.email}}</td>
+                <td>
+                    <md-button class="md-raised md-accent" ng-click="delete(contact)" >
+                      {{constants.delete}}
+                    </md-button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</md-content>
